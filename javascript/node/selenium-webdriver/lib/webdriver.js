@@ -1233,7 +1233,8 @@ class Options {
     let cookieString = name + '=' + value +
         (spec.domain ? ';domain=' + spec.domain : '') +
         (spec.path ? ';path=' + spec.path : '') +
-        (spec.secure ? ';secure' : '');
+        (spec.secure ? ';secure' : '') + 
+        (spec.httpOnly ? ';httpOnly' : '');
 
     let expiry;
     if (typeof spec.expiry === 'number') {
@@ -1253,6 +1254,7 @@ class Options {
               'path': spec.path,
               'domain': spec.domain,
               'secure': !!spec.secure,
+              'httpOnly': !!spec.httpOnly,
               'expiry': expiry
             }),
         'WebDriver.manage().addCookie(' + cookieString + ')');
